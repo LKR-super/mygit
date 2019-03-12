@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				background: #f3f3f3;
+			}
+			canvas{
+				background: white;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var canvas = document.querySelector("canvas");
+				var ctx = canvas.getContext("2d");
+				ctx.lineWidth = 10;//线宽
+				ctx.moveTo(100,100);//起点
+				ctx.lineTo(200,100);//画线
+				ctx.lineTo(200,200);
+				ctx.lineTo(100,200);
+				ctx.closePath();//闭合路径
+				ctx.strokeStyle = "#0000FF";//描边样式
+				ctx.fillStyle = "red";//填充样式
+				ctx.stroke();//描边方法
+				ctx.fill();//填充方法
+				ctx.beginPath();//开启一个新状态，基于之前的状态开启新的状态，新的状态会保持之前的设置
+				ctx.moveTo(100,300);
+				ctx.lineTo(150,350);
+				ctx.lineTo(200,300);
+				ctx.closePath();
+				ctx.stroke();
+				ctx.fill();
+				/*
+				 rect(x,y,width,height) 绘制矩形路径
+				x, y是矩形左上角坐标， width和height都是以像素计（下同）
+				PS: rect方法只是规划了矩形的路径，并没有填充和描边
+				 * */
+				ctx.beginPath();
+				ctx.rect(300,100,100,100);
+				ctx.stroke();
+				ctx.fillStyle = "gold";
+				ctx.fill();
+				
+				//strokeRect(x,y,width,height) 绘制描边矩形
+				ctx.beginPath();
+				ctx.strokeRect(300,300,100,100);
+				
+				//fillRect(x,y,width,height) 绘制填充矩形
+				ctx.beginPath();
+				ctx.fillRect(100,400,100,100);
+				
+				//clearRect(x,y,width,height) 清除矩形区域，
+				ctx.clearRect(100,400,50,50)
+			
+				//arc(x,y,radius,startAngle,endAngle,counterclockwise) 画圆弧/画圆
+				ctx.arc(550,200,50,0,180*Math.PI/180,false);
+				ctx.stroke();
+				ctx.fill();
+			}
+		</script>
+	</head>
+	<body>
+		<canvas width="1000" height="600">您的浏览器不支持</canvas>
+	</body>
+</html>
